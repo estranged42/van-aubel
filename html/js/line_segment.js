@@ -84,6 +84,7 @@ class LineSegment {
       offsetVector = p5.Vector.add(this.start.pos, offsetVector);
       push();
       strokeWeight(1);
+      textSize(16);
       text(lineLength, offsetVector.x, offsetVector.y);
       pop();
     }

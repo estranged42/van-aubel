@@ -4,10 +4,10 @@ let π = 3.15159;
 function _drawControlPoint(point) {
     if (point.containsXY(mouseX, mouseY)) {
         fill(0, 0, 0,);
-        point.radius = 15;
+        point.radius = 30;
     } else {
         fill(150, 150, 150);
-        point.radius = 10;
+        point.radius = 20;
     }
     noStroke();
     ellipse(point.x, point.y, point.radius, point.radius);

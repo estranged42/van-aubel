@@ -43,6 +43,7 @@ html, body {
 canvas {
   display: block;
   margin: 0 auto;
+  touch-action: none;
 }
 
 .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {

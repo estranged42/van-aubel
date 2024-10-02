@@ -3,7 +3,7 @@ var shapes = [];
 var p1, p2, p3, p4, vp1, vp2, vp3, vp4;
 
 function setup() {
-    let theCanvas = createCanvas(600, 600);
+    let theCanvas = createCanvas(700, 700);
     theCanvas.parent("p5canvas");
 
     p1 = new Point(250,200);
@@ -93,6 +93,22 @@ function mouseDragged() {
 }
 
 function mouseReleased() {
+    shapes.filter(s => s.isDragged)
+            .forEach(s => s.handleMouseReleased());
+}
+
+
+function touchStarted() {
+    shapes.filter(s => s.dragEnabled)
+            .find(s => s.handleMousePressed());
+}
+
+function touchMoved() {
+    shapes.filter(s => s.isDragged)
+            .forEach(s => s.handleMouseDragged());
+}
+
+function touchEnded() {
     shapes.filter(s => s.isDragged)
             .forEach(s => s.handleMouseReleased());
 }
