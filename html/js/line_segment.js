@@ -13,6 +13,7 @@ class LineSegment {
 
     this.dragEnabled = false;
     this.isDragged = true;
+    this.showLength = false;
   }
 
   dx() { return this.endX - this.startX; }
@@ -70,6 +71,21 @@ class LineSegment {
 
     if (this.dragEnabled) {
       drawControlPoints(this.points);
+    }
+
+    if (this.showLength) {
+      // Use p5 vectors to calculate the line length
+      let lenVector = p5.Vector.sub(this.start.pos, this.end.pos);
+      const lineLength = Math.floor(lenVector.mag());
+
+      // use a vector to create an offset for the label
+      let offsetVector = lenVector.copy();
+      offsetVector.setMag(10);
+      offsetVector = p5.Vector.add(this.start.pos, offsetVector);
+      push();
+      strokeWeight(1);
+      text(lineLength, offsetVector.x, offsetVector.y);
+      pop();
     }
   }
 }

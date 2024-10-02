@@ -17,6 +17,9 @@ function setup() {
 
     var l, b;
 
+    /*
+    Four lines for the quadralateral, moving clockwise from the upper left point.
+    */
     l = new LineSegment(p1, p2);
     l.dragEnabled = true;
     l.strokeColor = color(100);
@@ -53,15 +56,21 @@ function setup() {
     b = new Box(p4, p1, vp4);
     shapes.push(b);
 
+    /*
+    The two Van Aubel lines are calculated inside their Box objects.
+    */
     l = new LineSegment(vp1, vp3);
     l.strokeColor = color("#0c234b");
     l.strokeWeight = 3;
+    l.showLength = true;
     shapes.push(l);
 
     l = new LineSegment(vp2, vp4);
     l.strokeColor = color("#0c234b");
     l.strokeWeight = 3;
+    l.showLength = true;
     shapes.push(l);
+
 }
 
 function draw() {
@@ -73,17 +82,17 @@ function draw() {
 
 
 
-function mousePressed(){
+function mousePressed() {
     shapes.filter(s => s.dragEnabled)
-          .find(s => s.handleMousePressed());
-  }
-  
-  function mouseDragged(){
+            .find(s => s.handleMousePressed());
+}
+
+function mouseDragged() {
     shapes.filter(s => s.isDragged)
-          .forEach(s => s.handleMouseDragged());
-  }
-  
-  function mouseReleased(){
+            .forEach(s => s.handleMouseDragged());
+}
+
+function mouseReleased() {
     shapes.filter(s => s.isDragged)
-          .forEach(s => s.handleMouseReleased());
-  }
+            .forEach(s => s.handleMouseReleased());
+}
